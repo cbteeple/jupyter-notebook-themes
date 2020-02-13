@@ -990,6 +990,11 @@ div.output_subarea {
  flex: 1;
  max-width: 90%;
 }
+
+.output_subarea img{
+	background: white;
+}
+
 div.prompt.output_prompt {
  font-family: "Fira Code", monospace;
  font-size: 9.5pt;
@@ -1881,11 +1886,12 @@ div.cell.text_cell .cm-s-default span.cm-variable-3 {
  background: #334050;
 }
 div#maintoolbar {
- display: none !important;
+ /*display: none !important;*/
 }
 #header-container {
  display: none !important;
 }
+
 
 /**********************************
  MathJax Settings and Style Script

@@ -8,6 +8,8 @@ function insertCSS(themeName) {
 
   linkElement.href = chrome.extension.getURL(themeFilePath);
   linkElement.id = linkElementId;
+  linkElement.classList.add(linkElementId);
+  linkElement.name = themeName;
   linkElement.type = "text/css";
   linkElement.rel = "stylesheet";
 
@@ -16,13 +18,18 @@ function insertCSS(themeName) {
 
 
 function removeCSS() {
-  var linkElement = document.getElementById(linkElementId);
-  linkElement && linkElement.parentNode.removeChild(linkElement);
+  var linkElements = document.getElementsByClassName(linkElementId);
+
+  for(var i=0; i<linkElements.length; i++) {
+      linkElements[i].remove()
+  }
+  //linkElement && linkElement.parentNode.removeChild(linkElement);
 }
 
 
 function onExtensionMessage(request) {
   if (request.activate) {
+    removeCSS();
     insertCSS(request.theme);
   } else {
     removeCSS();
